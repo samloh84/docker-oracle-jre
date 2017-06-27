@@ -32,8 +32,9 @@ echo "${JCE_POLICY_ZIP_SHA256SUM}  ${JCE_POLICY_ZIP}" | sha256sum -c - && \
 yum-install ${TEMP_DIR}/${JRE_INSTALL_RPM} && \
 unzip -qq ${JCE_POLICY_ZIP} -d ${TEMP_DIR} && \
 mv -f ${TEMP_DIR}/${JCE_POLICY_ZIP_JAR_GLOB} ${INSTALL_DIR}/lib/security && \
-rm -rf ${TEMP_DIR_ROOT} && \
-popd
+popd && \
+rm -rf ${TEMP_DIR_ROOT}
+
 
 ENV JAVA_HOME ${INSTALL_DIR}
 ENV PATH ${PATH}:${JAVA_HOME}/bin
